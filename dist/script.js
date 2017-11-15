@@ -12633,3 +12633,4 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+var test = "hello-world";

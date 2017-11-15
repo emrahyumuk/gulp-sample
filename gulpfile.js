@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var gzip = require('gulp-gzip');
 
 var jsFiles = 'js/*.js';
 var jsDest = 'dist';
@@ -12,5 +13,7 @@ gulp.task('default', function() {
     .pipe(gulp.dest(jsDest))
     .pipe(rename('script.min.js'))
     .pipe(uglify())
+    .pipe(gulp.dest(jsDest))
+    .pipe(gzip())
     .pipe(gulp.dest(jsDest));
 });

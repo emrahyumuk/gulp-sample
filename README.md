@@ -1,4 +1,4 @@
-# Gulp Sample (Concat, Rename, Minify)
+# Gulp Sample (Concat, Rename, Uglify, Gzip)
 
 #### Check for Node and npm
 Make sure that you've installed Node and npm before attempting to install gulp.
@@ -25,7 +25,7 @@ If you don't have a package.json, create one. If you need help, run an `npm init
 Run this command in your project directory:
 
 ```sh
-npm install --save-dev gulp gulp-concat gulp-rename gulp-uglify
+npm install --save-dev gulp gulp-concat gulp-rename gulp-uglify gulp-gzip
 ```
 
 #### Create a `gulpfile`
@@ -37,6 +37,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var gzip = require('gulp-gzip');
 
 var jsFiles = 'js/*.js';
 var jsDest = 'dist';
@@ -47,6 +48,8 @@ gulp.task('default', function() {
     .pipe(gulp.dest(jsDest))
     .pipe(rename('script.min.js'))
     .pipe(uglify())
+    .pipe(gulp.dest(jsDest))
+    .pipe(gzip())
     .pipe(gulp.dest(jsDest));
 });
 ```
